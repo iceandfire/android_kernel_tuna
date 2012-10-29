@@ -28,10 +28,6 @@
 #include "powerdomain.h"
 #include "pm.h"
 
-#ifdef CONFIG_LIVE_OC
-#include <linux/live_oc.h>
-#endif
-
 /**
  * DOC: Introduction
  * =================
@@ -1314,10 +1310,5 @@ int __init omap_dvfs_register_device(struct device *dev, char *voltdm_name,
 	/* Fall through */
 out:
 	mutex_unlock(&omap_dvfs_lock);
-
-#ifdef CONFIG_LIVE_OC
-	liveoc_register_dvfsmutex(&omap_dvfs_lock);
-#endif
-
 	return ret;
 }
